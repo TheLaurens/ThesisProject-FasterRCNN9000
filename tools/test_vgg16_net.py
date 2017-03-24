@@ -7,7 +7,7 @@ import pprint
 import time, os, sys
 
 import tensorflow as tf
-from nets.vgg16_depre import vgg16
+from nets.vgg16 import vgg16
 
 def parse_args():
   """
@@ -92,11 +92,11 @@ if __name__ == '__main__':
     print ('Loading model check point from {:s}').format(args.model)
     saver = tf.train.Saver()
     saver.restore(sess, args.model)
-    print 'Loaded.'
+    print ('Loaded.')
   else:
     print ('Loading initial weights from {:s}').format(args.weight)
     sess.run(tf.global_variables_initializer())
-    print 'Loaded.'
+    print ('Loaded.')
 
   test_net(sess, net, imdb, filename, max_per_image=args.max_per_image)
 

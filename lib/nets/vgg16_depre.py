@@ -10,7 +10,7 @@ from tensorflow.contrib.slim import losses
 from tensorflow.contrib.slim import arg_scope
 
 import numpy as np
-import cPickle as pickle
+import pickle as pickle
 
 from layer_utils.snippets import generate_anchors_pre
 from layer_utils.proposal_layer import proposal_layer
@@ -473,10 +473,10 @@ class vgg16(object):
     testing = mode == 'TEST'
 
     assert tag != None
-    print 'Loading caffe weights...'
+    print ('Loading caffe weights...')
     with open(self._caffe_weight_path, 'r') as f:
       self._caffe_layers = pickle.load(f)
-    print 'Done!'
+    print ('Done!')
 
     rois, cls_prob, bbox_pred = self._vgg16_from_imagenet(sess, training)
 
